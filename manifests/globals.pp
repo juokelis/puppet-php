@@ -28,7 +28,7 @@ class php::globals (
   $default_php_version = $facts['os']['name'] ? {
     'Debian' => $facts['os']['release']['major'] ? {
       '9'     => '7.0',
-      default => '7.4',
+      default => '7.3',
     },
     'Ubuntu' => $facts['os']['release']['major'] ? {
       '20.04' => '7.4',
@@ -68,7 +68,7 @@ class php::globals (
       } else {
         case $globals_php_version {
           /^5\.6/,
-          /^7\.[0-9]/,
+          /^7\.[0-4]/,
           /^8\.[0-9]/: {
             $default_config_root  = "/etc/php/${globals_php_version}"
             $default_fpm_pid_file = "/var/run/php/php${globals_php_version}-fpm.pid"
